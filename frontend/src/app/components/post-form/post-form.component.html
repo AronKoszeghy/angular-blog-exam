@@ -1,0 +1,80 @@
+<div>
+  <br>
+  <h2 class="mt-5">Post Form</h2>
+  <hr/>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group mt-2">
+      <label
+        for="title"
+        class="form-control-label"
+        [ngClass]="{'text-danger': form.get('title')?.invalid && form.get('title')?.touched}"
+      >
+        Title:
+      </label>
+      <input
+        id="title"
+        name="title"
+        formControlName="title"
+        type="text"
+        class="form-control"
+        [ngClass]="{'is-invalid': form.get('title')?.invalid && form.get('title')?.touched}"
+      >
+      <small *ngIf="form.get('title')?.invalid && form.get('title')?.touched"
+             class="text-danger">
+        Please provide a title
+      </small>
+      <small *ngIf="form.get('title')?.errors?.['serverError'] && !form.get('title')?.errors?.['serverError']" class="text-danger">
+        {{ form.get('title')?.errors?.['serverError'] }}
+      </small>
+    </div>
+
+    <div class="form-group mt-2">
+      <label
+        for="text"
+        class="form-control-label"
+        [ngClass]="{'text-danger': form.get('text')?.invalid && form.get('text')?.touched}"
+      >
+        Text:
+      </label>
+      <textarea
+        id="text"
+        name="text"
+        formControlName="text"
+        type="text"
+        class="form-control"
+        rows="5"
+        [ngClass]="{'is-invalid': form.get('text')?.invalid && form.get('text')?.touched}"
+      ></textarea>
+      <small *ngIf="form.get('text')?.invalid && form.get('text')?.touched"
+             class="text-danger">
+        Please provide text
+      </small>
+      <small *ngIf="form.get('text')?.errors?.['serverError'] && !form.get('text')?.errors?.['serverError']" class="text-danger">
+        {{ form.get('text')?.errors?.['serverError'] }}
+      </small>
+    </div>
+
+    <div class="form-group mt-2">
+      <label
+        for="imageUrl"
+        class="form-control-label"
+        [ngClass]="{'text-danger': form.get('imageUrl')?.invalid && form.get('imageUrl')?.touched}"
+      >
+        Picture URL (optional):
+      </label>
+      <input
+        id="imageUrl"
+        name="imageUrl"
+        formControlName="imageUrl"
+        type="text"
+        class="form-control"
+        [ngClass]="{'is-invalid': form.get('imageUrl')?.invalid && form.get('imageUrl')?.touched}"
+      >
+      <small *ngIf="form.get('imageUrl')?.errors?.['serverError']" class="text-danger">
+        {{form.get('imageUrl')?.errors?.['serverError']}}
+      </small>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary mt-4">Save Post</button>
+  </form>
+</div>

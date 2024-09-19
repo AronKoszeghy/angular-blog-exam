@@ -1,0 +1,21 @@
+<br>
+<h2 class="mt-5">Posts</h2>
+
+<table id="list-table" class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Created At</th>
+  </tr>
+  </thead>
+  <tbody id="screening-list-table-body">
+  <tr *ngFor="let post of posts">
+    <td><img [src]="post.imageUrl" /></td>
+    <td> <a [routerLink]="['/posts', post.id]"> {{ post.title }} </a></td>
+    <td>{{ post.body }}</td>
+    <td>{{ post.createdAt }}</td>
+  </tr>
+  </tbody>
+</table>

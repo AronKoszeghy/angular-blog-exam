@@ -1,0 +1,26 @@
+<br>
+<h2 class="mt-5">Post Details</h2>
+
+<table id="list-table" class="table table-striped">
+  <thead class="thead-dark">
+  <tr>
+    <th>Image</th>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Created At</th>
+  </tr>
+  </thead>
+  <tbody id="screening-list-table-body">
+  <tr>
+    <td><img [src]="post.imageUrl" /></td>
+    <td> {{ post.title }} </td>
+    <td>{{ post.text }}</td>
+    <td>{{ post.createdAt }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary mt-4" (click)="displayCommentForm()">Add Comment</button>
+
+<app-comment-form *ngIf="showCommentForm" [postId]="postId"/>
+<app-comment-list [postId]="postId"></app-comment-list>

@@ -1,0 +1,21 @@
+<br>
+<h2 class="mt-5">Comments:</h2>
+
+<table id="list-table" class="table table-bordered">
+  <thead class="thead-dark">
+  <tr>
+    <th>Author</th>
+    <th>Text</th>
+    <th>Time</th>
+  </tr>
+  </thead>
+  <tbody id="screening-list-table-body">
+  <tr *ngFor="let comment of comments">
+    <td>{{ comment.author }} </td>
+    <td>{{ comment.text }}</td>
+    <td>{{ comment.createdAt }}</td>
+  </tr>
+  </tbody>
+</table>
+
+

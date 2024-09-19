@@ -1,0 +1,55 @@
+<div >
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group mt-2">
+      <label
+        for="author"
+        class="form-control-label"
+        [ngClass]="{'text-danger': form.get('author')?.invalid && form.get('author')?.touched}"
+      >
+        Author:
+      </label>
+      <input
+        id="author"
+        name="author"
+        formControlName="author"
+        type="text"
+        class="form-control"
+        [ngClass]="{'is-invalid': form.get('author')?.invalid && form.get('author')?.touched}"
+      >
+      <small *ngIf="form.get('author')?.invalid && form.get('author')?.touched"
+             class="text-danger">
+        Please provide author name
+      </small>
+      <small *ngIf="form.get('author')?.errors?.['serverError'] && !form.get('author')?.errors?.['serverError']" class="text-danger">
+        {{ form.get('author')?.errors?.['serverError'] }}
+      </small>
+    </div>
+
+    <div class="form-group mt-2">
+      <label
+        for="text"
+        class="form-control-label"
+        [ngClass]="{'text-danger': form.get('text')?.invalid && form.get('text')?.touched}"
+      >
+        Text:
+      </label>
+      <textarea
+        id="text"
+        name="text"
+        formControlName="text"
+        class="form-control"
+        rows="3"
+        [ngClass]="{'is-invalid': form.get('text')?.invalid && form.get('text')?.touched}"
+      ></textarea>
+      <small *ngIf="form.get('text')?.invalid && form.get('text')?.touched"
+             class="text-danger">
+        Please enter your comment
+      </small>
+      <small *ngIf="form.get('text')?.errors?.['serverError'] && !form.get('text')?.errors?.['serverError']" class="text-danger">
+        {{ form.get('text')?.errors?.['serverError'] }}
+      </small>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit" class="btn btn-primary mt-4">Save Comment</button>
+  </form>
+</div>
